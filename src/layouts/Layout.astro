@@ -1,0 +1,203 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Custom 3D printing and modeling — from a digital file to a finished part.",
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const isHome = path === "/";
+const isContact = path.startsWith("/contact");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          var dark = stored === "dark" || (!stored && prefersDark);
+          document.documentElement.classList.toggle("dark", dark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <header class="sticky top-0 z-50 border-b border-line bg-surface/95 backdrop-blur-sm">
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between gap-6 px-4 py-4 sm:px-6"
+      >
+        <a href="/" class="group flex items-baseline gap-2">
+          <span class="text-lg font-semibold tracking-tight text-ink"
+            >Elliots 3D factory</span
+          >
+          <span
+            class="hidden text-xs uppercase tracking-[0.2em] text-ink-subtle sm:inline"
+            >3D printing · 3D modeling</span
+          >
+        </a>
+        <div class="flex items-center gap-1">
+          <nav class="flex items-center gap-1 text-sm" aria-label="Main">
+            <a
+              href="/"
+              class:list={[
+                "rounded-md px-3 py-2 transition-colors",
+                isHome
+                  ? "bg-surface-muted text-ink"
+                  : "text-ink-muted hover:bg-surface-muted hover:text-ink",
+              ]}
+              aria-current={isHome ? "page" : undefined}>Home</a
+            >
+            <a
+              href="/contact"
+              class:list={[
+                "rounded-md px-3 py-2 transition-colors",
+                isContact
+                  ? "bg-surface-muted text-ink"
+                  : "text-ink-muted hover:bg-surface-muted hover:text-ink",
+              ]}
+              aria-current={isContact ? "page" : undefined}>Contact</a
+            >
+          </nav>
+          <button
+            type="button"
+            id="theme-toggle"
+            role="switch"
+            aria-checked="false"
+            aria-label="Dark mode"
+            title="Toggle light / dark mode"
+            class="theme-switch ml-2 inline-flex h-7 w-12 shrink-0 items-center rounded-full border border-zinc-950 bg-zinc-950 p-0.5 transition-colors"
+          >
+            <span
+              class="theme-switch-knob pointer-events-none flex size-5 items-center justify-center rounded-full bg-surface-raised text-ink shadow-sm transition-transform duration-200"
+            >
+              <svg
+                class="sun-icon size-3"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+                ></path>
+              </svg>
+              <svg
+                class="moon-icon size-3"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-line">
+      <div
+        class="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-8 text-sm text-ink-subtle sm:flex-row sm:items-center sm:justify-between sm:px-6"
+      >
+        <p>Elliots 3D factory — custom 3D printing and modeling.</p>
+        <a href="/contact" class="text-ember hover:text-ember-dark"
+          >Request a quote</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      const toggle = document.getElementById("theme-toggle");
+
+      function isDark() {
+        return root.classList.contains("dark");
+      }
+
+      function syncToggle() {
+        if (!toggle) return;
+        const dark = isDark();
+        toggle.setAttribute("aria-checked", dark ? "true" : "false");
+        toggle.classList.toggle("is-dark", dark);
+      }
+
+      function setTheme(dark: boolean) {
+        root.classList.toggle("dark", dark);
+        localStorage.setItem("theme", dark ? "dark" : "light");
+        syncToggle();
+      }
+
+      toggle?.addEventListener("click", () => setTheme(!isDark()));
+      syncToggle();
+    </script>
+
+    <style>
+      .theme-switch-knob {
+        transform: translateX(0);
+      }
+
+      .theme-switch.is-dark {
+        background-color: var(--color-ember);
+        border-color: var(--color-ember-dark);
+      }
+
+      .theme-switch.is-dark .theme-switch-knob {
+        transform: translateX(1.25rem);
+      }
+
+      .sun-icon {
+        display: block;
+      }
+
+      .moon-icon {
+        display: none;
+      }
+
+      .theme-switch.is-dark .sun-icon {
+        display: none;
+      }
+
+      .theme-switch.is-dark .moon-icon {
+        display: block;
+      }
+    </style>
+  </body>
+</html>

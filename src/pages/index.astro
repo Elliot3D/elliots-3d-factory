@@ -1,0 +1,256 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+  {
+    title: "3D printing",
+    body: "3D prints such as fidget toys or even home décor. You send the file, I print it.",
+  },
+  {
+    title: "3D modeling",
+    body: "Digital models from your imagination, made real with 3D modeling.",
+  },
+  {
+    title: "3D printing and modeling",
+    body: "3D modeling and printing — tell me what you want in detail, and I will model it and print it.",
+  },
+];
+
+const featured = [
+  {
+    src: "/work-bracket.svg",
+    title: "Functional bracket",
+    caption: "Print-ready part for a real-world fit.",
+  },
+  {
+    src: "/work-figure.svg",
+    title: "Character sculpt",
+    caption: "Modeled for a clean, printable pose.",
+  },
+  {
+    src: "/work-prototype.svg",
+    title: "Product prototype",
+    caption: "A first physical version to hold and test.",
+  },
+];
+
+const workSlots = [
+  {
+    id: "combined",
+    title: "3D modeling and printing",
+    alt: "Weather vane — 3D modeling and printing",
+    src: "/images/project-photo.jpg" as string | null,
+    buttonLabel: "More 3D modeling and printing work",
+    href: "/work/modeling-and-printing",
+  },
+  {
+    id: "modeling",
+    title: "3D modeling",
+    alt: "3D printed surf fin",
+    src: "/images/surf-fin.jpg" as string | null,
+    buttonLabel: "More 3D modeling work",
+    href: "/work/modeling",
+  },
+  {
+    id: "printing",
+    title: "3D printing",
+    alt: "Great Wave 3D print",
+    src: "/images/great-wave.jpg" as string | null,
+    buttonLabel: "More 3D printing work",
+    href: "/work/printing",
+  },
+];
+---
+
+<Layout title="Elliots 3D factory — 3D printing & modeling">
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+      <p class="text-sm uppercase tracking-[0.25em] text-ember">
+        Printing · modeling · commissions
+      </p>
+      <h1
+        class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
+      >
+        Elliot's 3D printing and modeling studio
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+        My name is Elliot, and I'm offering a 3D printing and modeling service
+        for some extra pocket money. Click the buttons below to request a quote
+        or see work I have already done.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/contact"
+          class="inline-flex items-center rounded-md bg-ember px-5 py-2.5 text-sm font-medium text-zinc-50 hover:bg-ember-dark dark:text-zinc-950"
+        >
+          Request a quote
+        </a>
+        <a
+          href="#work"
+          class="inline-flex items-center rounded-md border border-line-strong px-5 py-2.5 text-sm font-medium text-ink hover:bg-surface-muted"
+        >
+          See example work
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line" aria-labelledby="services-heading">
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <h2
+        id="services-heading"
+        class="text-2xl font-semibold tracking-tight text-ink"
+      >
+        What I offer
+      </h2>
+      <p class="mt-2 max-w-2xl text-ink-muted">
+        I offer 3D modeling, printing, or both to make your ideas come to life.
+      </p>
+      <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((service) => (
+            <li class="rounded-xl border border-line bg-surface-raised/60 p-6">
+              <h3 class="text-lg font-medium text-ink">{service.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+                {service.body}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- <section id="work" aria-labelledby="work-heading">
+    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <h2
+        id="work-heading"
+        class="text-2xl font-semibold tracking-tight text-ink"
+      >
+        Example work
+      </h2>
+      <p class="mt-2 max-w-2xl text-ink-muted">
+        These are stand-in images. Drop your own photos into the
+        <code class="rounded bg-code px-1.5 py-0.5 text-xs text-ink-muted"
+          >public/</code
+        > folder with the same file names to replace them.
+      </p>
+      <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          featured.map((item) => (
+            <li class="overflow-hidden rounded-xl border border-line bg-surface-raised/60">
+              <img
+                src={item.src}
+                alt={item.title}
+                class="h-48 w-full object-cover"
+                width="640"
+                height="400"
+              />
+              <div class="p-5">
+                <h3 class="font-medium text-ink">{item.title}</h3>
+                <p class="mt-1 text-sm text-ink-muted">{item.caption}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section> -->
+
+  <section class="bg-surface-muted/50">
+    <div
+      class="mx-auto flex max-w-5xl flex-col items-start gap-4 px-4 py-14 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+    >
+      <div>
+        <h2 class="text-xl font-semibold text-ink">Have a project?</h2>
+        <p class="mt-1 text-ink-muted">
+          Tell me what you want made. I will reply with questions, options, and
+          a quote.
+        </p>
+      </div>
+      <a
+        href="/contact"
+        class="inline-flex shrink-0 items-center rounded-md bg-ember px-5 py-2.5 text-sm font-medium text-zinc-50 hover:bg-ember-dark dark:text-zinc-950"
+      >
+        Request a quote
+      </a>
+    </div>
+    <div id="work" class="mx-auto max-w-5xl px-4 pb-14 sm:px-6">
+      <h2 class="mb-6 text-2xl font-semibold tracking-tight text-ink">
+        Work I've done
+      </h2>
+      <ul class="grid gap-4 sm:grid-cols-3">
+        {
+          workSlots.map((slot) => (
+            <li class="flex flex-col gap-2" data-photo-slot={slot.id}>
+              <h3 class="text-sm font-medium text-ink">{slot.title}</h3>
+              <div
+                class:list={[
+                  "photo-drop relative flex aspect-[3/4] items-center justify-center overflow-hidden rounded-xl border bg-surface-raised transition-colors",
+                  slot.src
+                    ? "border-line"
+                    : "border-dashed border-line-strong",
+                ]}
+              >
+                <img
+                  data-photo-img
+                  src={slot.src ?? undefined}
+                  alt={slot.alt}
+                  class:list={[
+                    "h-full w-full object-cover",
+                    !slot.src && "hidden",
+                  ]}
+                  width="1200"
+                  height="1600"
+                  loading="lazy"
+                />
+                <label
+                  data-photo-dropzone
+                  class:list={[
+                    "absolute inset-0 z-10 flex cursor-pointer flex-col items-center justify-center gap-2 px-4 text-center transition-colors",
+                    slot.src ? "hidden" : "flex",
+                  ]}
+                >
+                  <span class="pointer-events-none text-sm font-medium text-ink"
+                    >Drop a photo here</span
+                  >
+                  <span class="pointer-events-none text-xs text-ink-subtle">
+                    or click to choose a file
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif,.png,.jpg,.jpeg"
+                    class="sr-only"
+                    data-photo-input
+                  />
+                </label>
+              </div>
+              <a
+                href={slot.href}
+                class="mt-1 inline-flex items-center justify-center rounded-md border border-line-strong px-3 py-2 text-center text-xs font-medium text-ink hover:bg-surface-muted sm:text-sm"
+              >
+                {slot.buttonLabel}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-4 text-xs text-ink-subtle">
+        Tip: dropped photos stay in this browser. To keep them on the live site
+        later, put files named
+        <code class="rounded bg-code px-1">project-photo.jpg</code>,
+        <code class="rounded bg-code px-1">modeling-photo.jpg</code>, and
+        <code class="rounded bg-code px-1">printing-photo.jpg</code>
+        in the
+        <code class="rounded bg-code px-1">public/images</code>
+        folder.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { bindAllPhotoSlots } from "../scripts/photo-drop";
+  bindAllPhotoSlots();
+</script>

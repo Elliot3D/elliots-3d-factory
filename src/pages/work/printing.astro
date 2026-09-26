@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
+---
+
+<Layout
+  title="3D printing — Elliots 3D factory"
+  description="More of Elliots 3D factory printing work."
+>
+  <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+    <p class="text-sm uppercase tracking-[0.25em] text-ember">
+      Elliots 3D factory
+    </p>
+    <h1 class="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+      3D printing
+    </h1>
+    <p class="mt-3 max-w-2xl text-ink-muted">
+      Printed pieces such as toys, décor, and custom parts.
+    </p>
+
+    <PhotoDropGrid storagePrefix="printing" />
+
+    <a
+      href="/#work"
+      class="mt-10 inline-flex items-center text-sm text-ember hover:text-ember-dark"
+    >
+      ← Back to home
+    </a>
+  </div>
+</Layout>

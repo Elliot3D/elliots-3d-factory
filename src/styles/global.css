@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Commissioner", ui-sans-serif, system-ui, sans-serif;
+  --color-ember: var(--ember);
+  --color-ember-dark: var(--ember-dark);
+  --color-taupe-800: #5c5346;
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-code: var(--code);
+  --color-note: var(--note);
+  --color-note-border: var(--note-border);
+  --color-note-text: var(--note-text);
+}
+
+:root {
+  --surface: #fafafa;
+  --surface-muted: #f4f4f5;
+  --surface-raised: #ffffff;
+  --ink: #18181b;
+  --ink-muted: #52525b;
+  --ink-subtle: #71717a;
+  --line: #3f3f46;
+  --line-strong: #3f3f46;
+  --code: #e4e4e7;
+  --note: #fffbeb;
+  --note-border: #3f3f46;
+  --note-text: #92400e;
+  --ember: #8a3324;
+  --ember-dark: #6b2819;
+}
+
+.dark {
+  --surface: #09090b;
+  --surface-muted: #18181b;
+  --surface-raised: #18181b;
+  --ink: #fafafa;
+  --ink-muted: #a1a1aa;
+  --ink-subtle: #71717a;
+  --line: #5c5346;
+  --line-strong: #5c5346;
+  --code: #27272a;
+  --note: rgba(69, 26, 3, 0.4);
+  --note-border: #5c5346;
+  --note-text: #fde68a;
+  --ember: #e8a54b;
+  --ember-dark: #c4842e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface font-sans text-ink antialiased;
+}

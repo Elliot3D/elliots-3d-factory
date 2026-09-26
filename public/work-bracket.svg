@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Placeholder: printed bracket">
+  <rect width="640" height="400" fill="#18181b"/>
+  <rect x="80" y="90" width="480" height="220" rx="16" fill="#27272a"/>
+  <path d="M140 250 V150 h80 v40 h120 v-40 h80 v100 h-40 v-40 h-160 v40 z" fill="#3f3f46"/>
+  <circle cx="180" cy="170" r="14" fill="#e8a54b"/>
+  <circle cx="380" cy="170" r="14" fill="#e8a54b"/>
+  <text x="320" y="360" text-anchor="middle" fill="#71717a" font-family="system-ui,sans-serif" font-size="14">Replace with a photo of a print</text>
+</svg>
