@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
+import WorkGallery from "../../components/WorkGallery.astro";
 ---
 
 <Layout
@@ -18,13 +18,19 @@ import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
       Projects where I both modeled the design and printed the final piece.
     </p>
 
-    <PhotoDropGrid
-      storagePrefix="modeling-and-printing"
-      count={2}
-      seedImages={[
+    <WorkGallery
+      images={[
         {
           src: "/images/project-photo.jpg",
           alt: "Weather vane — 3D modeling and printing",
+        },
+        {
+          src: "/images/joycon-dock.jpg",
+          alt: "Illuminated Joy-Con dock — 3D modeling and printing",
+        },
+        {
+          src: "/images/wireframe-house.jpg",
+          alt: "Wireframe house — 3D modeling and printing",
         },
       ]}
     />

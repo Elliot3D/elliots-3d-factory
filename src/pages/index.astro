@@ -16,46 +16,25 @@ const services = [
   },
 ];
 
-const featured = [
-  {
-    src: "/work-bracket.svg",
-    title: "Functional bracket",
-    caption: "Print-ready part for a real-world fit.",
-  },
-  {
-    src: "/work-figure.svg",
-    title: "Character sculpt",
-    caption: "Modeled for a clean, printable pose.",
-  },
-  {
-    src: "/work-prototype.svg",
-    title: "Product prototype",
-    caption: "A first physical version to hold and test.",
-  },
-];
-
 const workSlots = [
   {
-    id: "combined",
     title: "3D modeling and printing",
     alt: "Weather vane — 3D modeling and printing",
-    src: "/images/project-photo.jpg" as string | null,
+    src: "/images/project-photo.jpg",
     buttonLabel: "More 3D modeling and printing work",
     href: "/work/modeling-and-printing",
   },
   {
-    id: "modeling",
     title: "3D modeling",
-    alt: "3D printed surf fin",
-    src: "/images/surf-fin.jpg" as string | null,
+    alt: "3D model of a sailing ship",
+    src: "/images/model-ship.jpg",
     buttonLabel: "More 3D modeling work",
     href: "/work/modeling",
   },
   {
-    id: "printing",
     title: "3D printing",
-    alt: "Great Wave 3D print",
-    src: "/images/great-wave.jpg" as string | null,
+    alt: "3D printed surf fin",
+    src: "/images/surf-fin.jpg",
     buttonLabel: "More 3D printing work",
     href: "/work/printing",
   },
@@ -121,43 +100,6 @@ const workSlots = [
     </div>
   </section>
 
-
-  <!-- <section id="work" aria-labelledby="work-heading">
-    <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-      <h2
-        id="work-heading"
-        class="text-2xl font-semibold tracking-tight text-ink"
-      >
-        Example work
-      </h2>
-      <p class="mt-2 max-w-2xl text-ink-muted">
-        These are stand-in images. Drop your own photos into the
-        <code class="rounded bg-code px-1.5 py-0.5 text-xs text-ink-muted"
-          >public/</code
-        > folder with the same file names to replace them.
-      </p>
-      <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          featured.map((item) => (
-            <li class="overflow-hidden rounded-xl border border-line bg-surface-raised/60">
-              <img
-                src={item.src}
-                alt={item.title}
-                class="h-48 w-full object-cover"
-                width="640"
-                height="400"
-              />
-              <div class="p-5">
-                <h3 class="font-medium text-ink">{item.title}</h3>
-                <p class="mt-1 text-sm text-ink-muted">{item.caption}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section> -->
-
   <section class="bg-surface-muted/50">
     <div
       class="mx-auto flex max-w-5xl flex-col items-start gap-4 px-4 py-14 sm:flex-row sm:items-center sm:justify-between sm:px-6"
@@ -183,48 +125,17 @@ const workSlots = [
       <ul class="grid gap-4 sm:grid-cols-3">
         {
           workSlots.map((slot) => (
-            <li class="flex flex-col gap-2" data-photo-slot={slot.id}>
+            <li class="flex flex-col gap-2">
               <h3 class="text-sm font-medium text-ink">{slot.title}</h3>
-              <div
-                class:list={[
-                  "photo-drop relative flex aspect-[3/4] items-center justify-center overflow-hidden rounded-xl border bg-surface-raised transition-colors",
-                  slot.src
-                    ? "border-line"
-                    : "border-dashed border-line-strong",
-                ]}
-              >
+              <div class="relative flex aspect-[3/4] items-center justify-center overflow-hidden rounded-xl border border-line bg-surface-raised">
                 <img
-                  data-photo-img
-                  src={slot.src ?? undefined}
+                  src={slot.src}
                   alt={slot.alt}
-                  class:list={[
-                    "h-full w-full object-cover",
-                    !slot.src && "hidden",
-                  ]}
+                  class="h-full w-full object-cover"
                   width="1200"
                   height="1600"
                   loading="lazy"
                 />
-                <label
-                  data-photo-dropzone
-                  class:list={[
-                    "absolute inset-0 z-10 flex cursor-pointer flex-col items-center justify-center gap-2 px-4 text-center transition-colors",
-                    slot.src ? "hidden" : "flex",
-                  ]}
-                >
-                  <span class="pointer-events-none text-sm font-medium text-ink"
-                    >Drop a photo here</span
-                  >
-                  <span class="pointer-events-none text-xs text-ink-subtle">
-                    or click to choose a file
-                  </span>
-                  <input
-                    type="file"
-                    accept="image/jpeg,image/png,image/webp,image/gif,.png,.jpg,.jpeg"
-                    class="sr-only"
-                    data-photo-input
-                  />
-                </label>
               </div>
               <a
                 href={slot.href}
@@ -236,21 +147,6 @@ const workSlots = [
           ))
         }
       </ul>
-      <p class="mt-4 text-xs text-ink-subtle">
-        Tip: dropped photos stay in this browser. To keep them on the live site
-        later, put files named
-        <code class="rounded bg-code px-1">project-photo.jpg</code>,
-        <code class="rounded bg-code px-1">modeling-photo.jpg</code>, and
-        <code class="rounded bg-code px-1">printing-photo.jpg</code>
-        in the
-        <code class="rounded bg-code px-1">public/images</code>
-        folder.
-      </p>
     </div>
   </section>
 </Layout>
-
-<script>
-  import { bindAllPhotoSlots } from "../scripts/photo-drop";
-  bindAllPhotoSlots();
-</script>

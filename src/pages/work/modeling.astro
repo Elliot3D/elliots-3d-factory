@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
+import WorkGallery from "../../components/WorkGallery.astro";
 ---
 
 <Layout
@@ -18,7 +18,22 @@ import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
       Digital models made from ideas, sketches, or descriptions.
     </p>
 
-    <PhotoDropGrid storagePrefix="modeling" />
+    <WorkGallery
+      images={[
+        {
+          src: "/images/model-ship.jpg",
+          alt: "3D model of a sailing ship",
+        },
+        {
+          src: "/images/model-bonsai.jpg",
+          alt: "3D model of a bonsai tree",
+        },
+        {
+          src: "/images/model-crystals.jpg",
+          alt: "3D model of a crystal cluster",
+        },
+      ]}
+    />
 
     <a
       href="/#work"

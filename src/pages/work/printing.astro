@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
+import WorkGallery from "../../components/WorkGallery.astro";
 ---
 
 <Layout
@@ -18,7 +18,22 @@ import PhotoDropGrid from "../../components/PhotoDropGrid.astro";
       Printed pieces such as toys, décor, and custom parts.
     </p>
 
-    <PhotoDropGrid storagePrefix="printing" />
+    <WorkGallery
+      images={[
+        {
+          src: "/images/surf-fin.jpg",
+          alt: "3D printed surf fin",
+        },
+        {
+          src: "/images/great-wave.jpg",
+          alt: "Great Wave 3D print",
+        },
+        {
+          src: "/images/blue-dino.jpg",
+          alt: "Blue articulated dinosaur 3D print",
+        },
+      ]}
+    />
 
     <a
       href="/#work"
